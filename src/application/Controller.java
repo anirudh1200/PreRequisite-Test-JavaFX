@@ -6,17 +6,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static application.Main.primaryStage;
+
 public class Controller implements Initializable {
 
     @FXML
     private AnchorPane rootPane;
-
     @FXML
     private void closeWindow() {
         Platform.exit();
@@ -27,6 +29,8 @@ public class Controller implements Initializable {
         AnchorPane root1 = fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("About");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(primaryStage);
         stage.setScene(new Scene(root1));
         stage.showAndWait();
     }

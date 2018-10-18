@@ -5,12 +5,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -18,7 +16,6 @@ public class testPageController implements Initializable {
 
     @FXML
     VBox vbox;
-
     @FXML
     AnchorPane rootPane;
 
@@ -44,11 +41,7 @@ public class testPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Button submit = new Button("Submit");
-        vbox.getChildren().add(submit);
-        submit.setOnAction(e -> {
-            AlertBox.display("Finish Test", "Are you sure you want to submit?");
-        });
+
 
     }
 

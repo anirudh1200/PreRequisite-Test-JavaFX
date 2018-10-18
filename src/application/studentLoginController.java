@@ -24,10 +24,8 @@ public class studentLoginController implements Initializable {
 
     @FXML
     private Label warningLabel;
-
     @FXML
     private TextField rollNoText;
-
     @FXML
     private PasswordField passwordText;
 

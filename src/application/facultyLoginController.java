@@ -16,10 +16,8 @@ public class facultyLoginController implements Initializable {
 
     @FXML
     private Label warningLabel;
-
     @FXML
     private TextField facultyId;
-
     @FXML
     private PasswordField passwordText;
 

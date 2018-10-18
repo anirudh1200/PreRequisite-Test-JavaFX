@@ -15,18 +15,36 @@ public class dashboardController implements Initializable {
 
     @FXML
     private Label usernameLabel;
-
     @FXML
     private AnchorPane rootPane;
+
+    String subName;
 
     String username = null;
 
     @FXML
     private void startMaths() throws IOException {
+        this.subName = "Applied Mathematics-3";
+        startLoadInstruction();
+    }
+
+    @FXML
+    private void startDataStructure() throws IOException {
+        this.subName = "Data Structures";
+        startLoadInstruction();
+    }
+
+    @FXML
+    private void startDiscreteMath() throws IOException {
+        this.subName = "Discrete Mathematics";
+        startLoadInstruction();
+    }
+
+    private void startLoadInstruction() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("instructionPage.fxml"));
-        AnchorPane instructionPane = (AnchorPane) fxmlLoader.load();
+        AnchorPane instructionPane = fxmlLoader.load();
         instructionPageController control = fxmlLoader.<instructionPageController>getController();
-        control.getSetNum(1);
+        control.getSubjectName(subName);
         rootPane.getChildren().setAll(instructionPane);
     }
 

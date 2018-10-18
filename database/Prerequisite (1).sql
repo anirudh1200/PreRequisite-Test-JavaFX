@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 17, 2018 at 07:43 PM
+-- Generation Time: Oct 18, 2018 at 09:20 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -26,10 +26,8 @@ SET time_zone = "+00:00";
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`setNum`, `data`, `ans`) VALUES
-(1, 'question 1 here', 0),
-(1, 'question 2 here', 1),
-(2, 'question 3 here', 2);
+INSERT INTO `question` (`subject`, `data`, `ans`, `option1`, `option2`, `option3`, `option4`) VALUES
+('Applied Mathematics-3', 'Question 1', 0, '1', '2', '3', '4');
 
 --
 -- Dumping data for table `user`
