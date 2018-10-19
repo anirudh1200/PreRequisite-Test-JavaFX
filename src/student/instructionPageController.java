@@ -68,7 +68,7 @@ public class instructionPageController implements Initializable {
             questions.addElement(q1);
             this.totalQuestions++;
         }
-        totalDisplay.setText("Number of Questions: " + totalQuestions);
+        totalDisplay.setText("Number of Questi+ons: " + totalQuestions);
     }
 
     private void setQuestions() {

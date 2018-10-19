@@ -41,7 +41,7 @@ public class studentLoginController implements Initializable {
         }
         String password = null;
         String username = null;
-        String query = "SELECT * FROM `user` WHERE `username` LIKE '" + rollNoText.getText() +"'";
+        String query = "SELECT * FROM `student` WHERE `username` LIKE '" + rollNoText.getText() +"'";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()) {

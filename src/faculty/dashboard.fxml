@@ -11,5 +11,6 @@
                 <Font size="100.0" />
             </font>
         </Label>
+      <Label fx:id="facultyName" layoutX="130.0" layoutY="196.0" prefHeight="54.0" prefWidth="128.0" text="Label" />
     </children>
 </AnchorPane>

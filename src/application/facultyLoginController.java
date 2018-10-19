@@ -1,5 +1,7 @@
 package application;
 
+import connectivity.Connect;
+import faculty.dashboardController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,7 +11,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class facultyLoginController implements Initializable {
@@ -21,30 +29,42 @@ public class facultyLoginController implements Initializable {
     @FXML
     private PasswordField passwordText;
 
+
+
     @FXML
-    private void facultyLogin(){
+    private void facultyLogin() throws SQLException, IOException {
+
+        Connect connect = new Connect();
+        Connection connection = connect.getConnection();
 
         if(facultyId.getText().isEmpty() || passwordText.getText().isEmpty()) {
             warningLabel.setText("*Username/Password cannot be empty");
             return;
         }
-        if(!facultyId.getText().equals("a") || !passwordText.getText().equals("a")) {
+        String password = null;
+        String facultyid = null;
+        String facultyName = null;
+        String query = "SELECT * FROM `faculty` WHERE `facultyId` LIKE '" + facultyId.getText() +"'";
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(query);
+        while(rs.next()) {
+            password = rs.getString("password");
+            facultyName = rs.getString("Name");
+        }
+        if(!passwordText.getText().equals(password)) {
             warningLabel.setText("*Username and/or Password is incorrect");
             return;
         }
-        if(facultyId.getText().equals("a") && passwordText.getText().equals("a")){
-            try{
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/faculty/dashboard.fxml"));
-                AnchorPane root1 = fxmlLoader.load();
-                Stage stage = new Stage();
-                stage.setTitle("DashBoard");
-                stage.setScene(new Scene(root1));
-                stage.show();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-            warningLabel.getScene().getWindow().hide();
-        }
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/faculty/dashboard.fxml"));
+        AnchorPane root1 = fxmlLoader.load();
+        dashboardController control = fxmlLoader.<dashboardController>getController();
+        control.getName(facultyName);
+        Stage stage = new Stage();
+        stage.setTitle("Student Prerequisite Test");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        statement.close();
+        warningLabel.getScene().getWindow().hide();
     }
 
     @Override
