@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
@@ -79,12 +80,18 @@ public class instructionPageController implements Initializable {
         vbox.setSpacing(10);
         Label questionLabel[] = new Label[totalQuestions];
         RadioButton questionBtn[] = new RadioButton[4*totalQuestions];
+        ToggleGroup tg[] = new ToggleGroup[totalQuestions];
         for(int i=0; i<totalQuestions; i++) {
             questionLabel[i] = new Label(questions.elementAt(i).question);
             questionBtn[(i*4)+0] = new RadioButton(questions.elementAt(i).option1);
             questionBtn[(i*4)+1] = new RadioButton(questions.elementAt(i).option2);
             questionBtn[(i*4)+2] = new RadioButton(questions.elementAt(i).option3);
             questionBtn[(i*4)+3] = new RadioButton(questions.elementAt(i).option4);
+            tg[i] = new ToggleGroup();
+            questionBtn[(i*4)+0].setToggleGroup(tg[i]);
+            questionBtn[(i*4)+1].setToggleGroup(tg[i]);
+            questionBtn[(i*4)+2].setToggleGroup(tg[i]);
+            questionBtn[(i*4)+3].setToggleGroup(tg[i]);
             vbox.getChildren().addAll(questionLabel[i], questionBtn[(i*4)+0], questionBtn[(i*4)+1], questionBtn[(i*4)+2], questionBtn[(i*4)+3]);
         }
         Button submit = new Button("Submit");

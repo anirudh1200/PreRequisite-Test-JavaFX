@@ -44,8 +44,14 @@ public class facultyLoginController implements Initializable {
         String password = null;
         String facultyid = null;
         String facultyName = null;
+        Statement statement = null;
         String query = "SELECT * FROM `faculty` WHERE `facultyId` LIKE '" + facultyId.getText() +"'";
-        Statement statement = connection.createStatement();
+        try{
+            statement = connection.createStatement();
+        }
+        catch(NullPointerException e){
+            warningLabel.setText("*Database not connected");
+        }
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()) {
             password = rs.getString("password");
