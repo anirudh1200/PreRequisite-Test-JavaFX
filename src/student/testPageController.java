@@ -48,12 +48,22 @@ public class testPageController implements Initializable {
     }
 
     void changeScene() throws IOException {
-        AnchorPane facultyLoginPane = FXMLLoader.load(getClass().getResource("facultyLogin.fxml"));
-        rootPane.getChildren().setAll(facultyLoginPane);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
+        AnchorPane dashboard = fxmlLoader.load();
+        rootPane.getChildren().setAll(dashboard);
     }
 
     @FXML
-    private void handleSubmit(){
+    private void handleSubmit() throws IOException {
+        boolean result = ConfirmBox.display("Submit", "Are you sure you want to submit?");
+        if(result == true){
+            stopTimer();
+            evaluate();
+            changeScene();
+        }
+    }
+
+    void evaluate(){
 
     }
 
