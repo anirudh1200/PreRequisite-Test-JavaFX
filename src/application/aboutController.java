@@ -11,15 +11,15 @@ public class aboutController implements Initializable{
     @FXML
     private Label about;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+
+    }
+
     @FXML
     private void closeAbout() {
         about.getScene().getWindow().hide();
         return;
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-
     }
 
 }

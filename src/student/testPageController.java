@@ -1,6 +1,5 @@
 package student;
 
-import java.awt.desktop.SystemSleepEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -8,8 +7,6 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
-import java.util.concurrent.TimeUnit;
-
 import connectivity.Connect;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -35,20 +32,35 @@ public class testPageController implements Initializable {
     Label timeLabel;
 
     int totalQuestions = 0;
-
     String subName;
-
     int totalMarks=0;
-
     int interval = 1200;
-
     Timer timer = new Timer();
-
     int percentage;
-
     String username;
-
     public Vector<Question> questions = new Vector<Question>();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(()->{
+            start();
+        });
+    }
+
+    @FXML
+    private void handleSubmit() throws IOException, SQLException {
+        boolean result = ConfirmBox.display("Submit", "Are you sure you want to submit?");
+        if(result == true){
+            submit();
+        }
+    }
+
+    void start(){
+        try {
+            getQuestions();
+        } catch (SQLException e) {}
+        setQuestions();
+    }
 
     public void startTimer() {
         this.timer.scheduleAtFixedRate(new TimerTask() {
@@ -56,7 +68,6 @@ public class testPageController implements Initializable {
                 if(interval > 0)
                 {
                     Platform.runLater(() -> timeLabel.setText("Time Remaining: "+(interval/60) +":"+(interval%60)));
-                    System.out.println(interval);
                     interval--;
                 }
                 else{
@@ -72,15 +83,9 @@ public class testPageController implements Initializable {
     void changeScene() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
         AnchorPane dashboard = fxmlLoader.load();
+        dashboardController control = fxmlLoader.<dashboardController>getController();
+        control.getUser(username);
         rootPane.getChildren().setAll(dashboard);
-    }
-
-    @FXML
-    private void handleSubmit() throws IOException, SQLException {
-        boolean result = ConfirmBox.display("Submit", "Are you sure you want to submit?");
-        if(result == true){
-            submit();
-        }
     }
 
     void submit() throws IOException, SQLException {
@@ -99,23 +104,6 @@ public class testPageController implements Initializable {
 
     void getSubName(String subName){
         this.subName = subName;
-        System.out.println(this.subName);
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        Platform.runLater(()->{
-            start();
-        });
-    }
-
-    void start(){
-        System.out.println(subName);
-        try {
-            getQuestions();
-        } catch (SQLException e) {}
-        setQuestions();
     }
 
     void getQuestions() throws SQLException {
@@ -136,8 +124,6 @@ public class testPageController implements Initializable {
             this.totalQuestions++;
             i++;
         }
-        System.out.println(subName);
-        System.out.println("total questions "+totalQuestions);
         statement.close();
         connection.close();
     }
@@ -167,7 +153,6 @@ public class testPageController implements Initializable {
                 {
 
                     RadioButton chk = (RadioButton)t1.getToggleGroup().getSelectedToggle(); // Cast object to radio button
-                    System.out.println(chk.getText().equals("option"+questions.elementAt(finalI).ans));
                     if(chk.getText().equals("option"+questions.elementAt(finalI).ans)){
                         totalMarks++;
                     }
@@ -181,7 +166,7 @@ public class testPageController implements Initializable {
     }
 
     void evaluate() {
-        percentage = totalMarks/totalQuestions;
+        percentage = totalMarks*100/totalQuestions;
     }
 
     public void getUser(String username) {

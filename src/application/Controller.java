@@ -19,20 +19,15 @@ public class Controller implements Initializable {
 
     @FXML
     private AnchorPane rootPane;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
     @FXML
     private void closeWindow() {
         Platform.exit();
-    }
-
-    public void showAbout() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("about.fxml"));
-        AnchorPane root1 = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("About");
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(primaryStage);
-        stage.setScene(new Scene(root1));
-        stage.showAndWait();
     }
 
     @FXML
@@ -47,9 +42,15 @@ public class Controller implements Initializable {
         rootPane.getChildren().setAll(facultyLoginPane);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public void showAbout() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("about.fxml"));
+        AnchorPane root1 = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("About");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(primaryStage);
+        stage.setScene(new Scene(root1));
+        stage.showAndWait();
     }
 
 }

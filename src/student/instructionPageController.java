@@ -22,24 +22,18 @@ import connectivity.Connect;
 
 public class instructionPageController implements Initializable {
 
-    String subName;
-
-    String username;
-
-    int totalQuestions = 0;
-
     @FXML
     private AnchorPane rootPane;
 
+    String subName;
+    String username;
+    int totalQuestions = 0;
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("testPage.fxml"));
     AnchorPane testPane = fxmlLoader.load();
     testPageController control = fxmlLoader.<testPageController>getController();
 
     @FXML
     Label totalDisplay;
-
-    public instructionPageController() throws IOException {
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,6 +42,19 @@ public class instructionPageController implements Initializable {
                 setText();
             } catch (SQLException e) {}
         });
+    }
+
+    @FXML
+    private void startTest() {
+        testPageController control = fxmlLoader.<testPageController>getController();
+        control.getSubName(subName);
+        control.getUser(username);
+        control.startTimer();
+        control.start();
+        rootPane.getChildren().setAll(testPane);
+    }
+
+    public instructionPageController() throws IOException {
     }
 
     public void getSubjectName(String subName) {
@@ -66,18 +73,6 @@ public class instructionPageController implements Initializable {
         statement.close();
         connection.close();
         totalDisplay.setText("Number of Questions: " + totalQuestions);
-    }
-
-
-
-    @FXML
-    private void startTest() {
-        testPageController control = fxmlLoader.<testPageController>getController();
-        control.getSubName(subName);
-        control.getUser(username);
-        control.startTimer();
-        control.start();
-        rootPane.getChildren().setAll(testPane);
     }
 
     public void getUser(String username) {

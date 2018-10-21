@@ -29,6 +29,11 @@ public class studentLoginController implements Initializable {
     @FXML
     private PasswordField passwordText;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
     @FXML
     private void studentLogin() throws SQLException, IOException {
 
@@ -71,11 +76,6 @@ public class studentLoginController implements Initializable {
         statement.close();
         connection.close();
         warningLabel.getScene().getWindow().hide();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 
 }
