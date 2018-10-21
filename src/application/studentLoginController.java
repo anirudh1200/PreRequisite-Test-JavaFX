@@ -69,6 +69,7 @@ public class studentLoginController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
         statement.close();
+        connection.close();
         warningLabel.getScene().getWindow().hide();
     }
 

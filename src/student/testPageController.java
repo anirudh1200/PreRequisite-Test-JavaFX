@@ -24,9 +24,13 @@ public class testPageController implements Initializable {
 
     @FXML
     AnchorPane rootPane;
-
     @FXML
     Button submitBtn;
+    @FXML
+    VBox questionVbox;
+    @FXML
+    Label titleLabel;
+
 
     Timer timer = new Timer();
 
@@ -48,20 +52,14 @@ public class testPageController implements Initializable {
         rootPane.getChildren().setAll(facultyLoginPane);
     }
 
+    @FXML
+    private void handleSubmit(){
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Platform.runLater(()->{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("testPage.fxml"));
-            AnchorPane testPane = null;
-            try {
-                testPane = fxmlLoader.load();
-            } catch (IOException e) {}
-            this.rootPane = testPane;
-        });
-        Button submitBtn = new Button("Submit");
-        submitBtn.layoutXProperty().set(900d);
-        submitBtn.layoutYProperty().set(500d);
-        rootPane.getChildren().add(submitBtn);
+
     }
 
 }

@@ -4,8 +4,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -31,6 +29,7 @@ public class instructionPageController implements Initializable {
 
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("testPage.fxml"));
     AnchorPane testPane = fxmlLoader.load();
+    testPageController control = fxmlLoader.<testPageController>getController();
 
     @FXML
     Label totalDisplay;
@@ -54,10 +53,9 @@ public class instructionPageController implements Initializable {
 
     public Vector<Question> questions = new Vector<Question>();
 
-    private void getQuestions() throws SQLException {
+    void getQuestions() throws SQLException {
         Connect connect = new Connect();
         Connection connection = connect.getConnection();
-        System.out.println(subName);
         String query = "SELECT * FROM `question` WHERE (subject = '"+ subName +"')";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(query);
@@ -69,14 +67,15 @@ public class instructionPageController implements Initializable {
             questions.addElement(q1);
             this.totalQuestions++;
         }
-        totalDisplay.setText("Number of Questi+ons: " + totalQuestions);
+        System.out.println(subName);
+        System.out.println("total questions "+totalQuestions);
+        totalDisplay.setText("Number of Questions: " + totalQuestions);
+        statement.close();
+        connection.close();
     }
 
-    private void setQuestions() {
-        Label displayName = new Label("Subject: "+subName);
-
-        VBox vbox = new VBox();
-        vbox.setPadding(new Insets(100, 20, 50, 20));
+    void setQuestions() {
+        VBox vbox = control.questionVbox;
         vbox.setSpacing(10);
         Label questionLabel[] = new Label[totalQuestions];
         RadioButton questionBtn[] = new RadioButton[4*totalQuestions];
@@ -94,11 +93,6 @@ public class instructionPageController implements Initializable {
             questionBtn[(i*4)+3].setToggleGroup(tg[i]);
             vbox.getChildren().addAll(questionLabel[i], questionBtn[(i*4)+0], questionBtn[(i*4)+1], questionBtn[(i*4)+2], questionBtn[(i*4)+3]);
         }
-        Button submit = new Button("Submit");
-        vbox.getChildren().add(submit);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("testPage.fxml"));
-        testPageController control = fxmlLoader.<testPageController>getController();
-        this.testPane.getChildren().addAll(displayName, vbox);
     }
 
     @FXML
