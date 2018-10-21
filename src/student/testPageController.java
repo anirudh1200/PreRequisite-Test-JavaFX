@@ -3,10 +3,7 @@ package student;
 import java.awt.desktop.SystemSleepEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -48,6 +45,8 @@ public class testPageController implements Initializable {
     Timer timer = new Timer();
 
     int percentage;
+
+    String username;
 
     public Vector<Question> questions = new Vector<Question>();
 
@@ -91,15 +90,16 @@ public class testPageController implements Initializable {
         changeScene();
     }
 
-    void saveMarks(){
-//        Connect connect = new Connect();
-//        Connection connection = connect.getConnection();
+    void saveMarks() throws SQLException {
+        Connect connect = new Connect();
+        Connection connection = connect.getConnection();
+        PreparedStatement updateEXP = connection.prepareStatement("update`student` set `"+subName+"` = '"+percentage+"'  where `username` = '"+username+"'");
+        updateEXP.executeUpdate();
     }
 
     void getSubName(String subName){
         this.subName = subName;
         System.out.println(this.subName);
-        String query = "SELECT * FROM `question` WHERE (subject = '"+ subName +"')";
 
     }
 
@@ -182,5 +182,9 @@ public class testPageController implements Initializable {
 
     void evaluate() {
         percentage = totalMarks/totalQuestions;
+    }
+
+    public void getUser(String username) {
+        this.username = username;
     }
 }

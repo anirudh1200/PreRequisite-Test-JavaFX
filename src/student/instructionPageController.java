@@ -24,6 +24,8 @@ public class instructionPageController implements Initializable {
 
     String subName;
 
+    String username;
+
     int totalQuestions = 0;
 
     @FXML
@@ -72,9 +74,14 @@ public class instructionPageController implements Initializable {
     private void startTest() {
         testPageController control = fxmlLoader.<testPageController>getController();
         control.getSubName(subName);
+        control.getUser(username);
         control.startTimer();
         control.start();
         rootPane.getChildren().setAll(testPane);
+    }
+
+    public void getUser(String username) {
+        this.username = username;
     }
 
 }

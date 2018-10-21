@@ -45,6 +45,7 @@ public class dashboardController implements Initializable {
         AnchorPane instructionPane = fxmlLoader.load();
         instructionPageController control = fxmlLoader.<instructionPageController>getController();
         control.getSubjectName(subName);
+        control.getUser(username);
         rootPane.getChildren().setAll(instructionPane);
     }
 
