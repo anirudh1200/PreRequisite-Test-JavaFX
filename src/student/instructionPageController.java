@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -75,8 +76,8 @@ public class instructionPageController implements Initializable {
     }
 
     void setQuestions() {
+        ScrollPane sp = new ScrollPane();
         VBox vbox = control.questionVbox;
-        vbox.setSpacing(10);
         Label questionLabel[] = new Label[totalQuestions];
         RadioButton questionBtn[] = new RadioButton[4*totalQuestions];
         ToggleGroup tg[] = new ToggleGroup[totalQuestions];
@@ -93,6 +94,9 @@ public class instructionPageController implements Initializable {
             questionBtn[(i*4)+3].setToggleGroup(tg[i]);
             vbox.getChildren().addAll(questionLabel[i], questionBtn[(i*4)+0], questionBtn[(i*4)+1], questionBtn[(i*4)+2], questionBtn[(i*4)+3]);
         }
+        sp.setContent(vbox);
+        sp.setPrefSize(100,100);
+        sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
     }
 
     @FXML
