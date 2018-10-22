@@ -12,7 +12,7 @@
                 <Font size="40.0" />
             </font>
         </Label>
-        <Label fx:id="usernameLabel" layoutX="199.0" layoutY="203.0" prefHeight="42.0" prefWidth="270.0" text="Wlc" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="175.0">
+        <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" layoutX="199.0" layoutY="203.0" prefHeight="42.0" prefWidth="219.0" text="Wlc" AnchorPane.rightAnchor="1200.0" AnchorPane.topAnchor="175.0">
             <font>
                 <Font size="20.0" />
             </font>

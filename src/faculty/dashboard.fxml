@@ -4,11 +4,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1280.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faculty.dashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1050.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faculty.dashboardController">
     <children>
-        <Label layoutX="490.0" layoutY="368.0" text="Faculty Dashboard">
+        <Label layoutX="838.0" layoutY="108.0" text="Faculty Dashboard">
             <font>
-                <Font size="100.0" />
+                <Font size="40.0" />
             </font>
         </Label>
       <Label fx:id="facultyName" layoutX="130.0" layoutY="196.0" prefHeight="54.0" prefWidth="128.0" text="Label" />
