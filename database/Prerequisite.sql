@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 22, 2018 at 09:05 PM
+-- Generation Time: Oct 23, 2018 at 08:28 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -21,6 +21,41 @@ SET time_zone = "+00:00";
 --
 -- Database: `Prerequisite`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty`
+--
+
+CREATE TABLE `faculty` (
+  `facultyId` varchar(10) NOT NULL DEFAULT 'id',
+  `password` varchar(20) NOT NULL DEFAULT 'pass',
+  `Name` varchar(20) NOT NULL DEFAULT 'name'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `faculty`
+--
+
+INSERT INTO `faculty` (`facultyId`, `password`, `Name`) VALUES
+('1234', 'pass', 'Faculty');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question`
+--
+
+CREATE TABLE `question` (
+  `subject` varchar(30) NOT NULL DEFAULT 'subjectName',
+  `ans` varchar(1) NOT NULL DEFAULT '0',
+  `option1` varchar(100) NOT NULL DEFAULT 'option1',
+  `option2` varchar(100) NOT NULL DEFAULT 'option2',
+  `option3` varchar(100) NOT NULL DEFAULT 'option3',
+  `option4` varchar(100) NOT NULL DEFAULT 'option4',
+  `data` varchar(200) NOT NULL DEFAULT 'question'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `question`
@@ -40,6 +75,23 @@ INSERT INTO `question` (`subject`, `ans`, `option1`, `option2`, `option3`, `opti
 ('ECCF', '2', 'Yes.', 'None of these.', 'It\'s affect can be reduced with the help of many modulation techniques.', 'All of these.', 'Can noise be completely removed from a signal?'),
 ('Applied Mathematics-3', '2', '9/14', '54/5', '29/6', '1', '9/5+9=?'),
 ('Applied Mathematics-3', '4', '1', '24', '15', '16', '8+4*2=?');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+  `username` varchar(8) NOT NULL,
+  `password` varchar(10) NOT NULL,
+  `Applied Mathematics-3` varchar(3) NOT NULL DEFAULT '-1',
+  `DLDA` varchar(3) NOT NULL DEFAULT '-1',
+  `Data Structures` varchar(3) NOT NULL DEFAULT '-1',
+  `Discrete Mathematics` varchar(3) NOT NULL DEFAULT '-1',
+  `Object Oriented Programming` varchar(3) NOT NULL DEFAULT '-1',
+  `ECCF` varchar(3) NOT NULL DEFAULT '-1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`

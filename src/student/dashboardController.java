@@ -7,15 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-
 import connectivity.Connect;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class dashboardController implements Initializable {
 
@@ -95,6 +96,17 @@ public class dashboardController implements Initializable {
     private void startECCF() throws IOException {
         this.subName = "ECCF";
         startLoadInstruction();
+    }
+
+    @FXML
+    public void logout() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/FirstScene.fxml"));
+        AnchorPane root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Login");
+        stage.setScene(new Scene(root));
+        stage.show();
+        ml.getScene().getWindow().hide();
     }
 
     private void startLoadInstruction() throws IOException {

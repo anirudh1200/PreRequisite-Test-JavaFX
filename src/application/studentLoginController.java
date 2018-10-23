@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import student.dashboardController;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -70,11 +69,11 @@ public class studentLoginController implements Initializable {
         dashboardController control = fxmlLoader.<dashboardController>getController();
         control.getUser(username);
         Stage stage = new Stage();
+        statement.close();
+        connection.close();
         stage.setTitle("Student Prerequisite Test");
         stage.setScene(new Scene(root1));
         stage.show();
-        statement.close();
-        connection.close();
         warningLabel.getScene().getWindow().hide();
     }
 

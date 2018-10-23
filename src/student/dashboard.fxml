@@ -56,5 +56,10 @@
       <Label fx:id="dml" layoutX="1148.0" layoutY="555.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="550.0" />
       <Label fx:id="ol" layoutX="1156.0" layoutY="667.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="650.0" />
       <Label fx:id="el" layoutX="1156.0" layoutY="755.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="750.0" />
+      <Button layoutX="929.0" layoutY="888.0" mnemonicParsing="false" onAction="#logout" text="Logout" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="920.0" AnchorPane.rightAnchor="914.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
