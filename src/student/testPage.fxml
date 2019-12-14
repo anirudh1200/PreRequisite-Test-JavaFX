@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootPane" maxHeight="1050.0" maxWidth="1920.0" minHeight="1050.0" minWidth="1920.0" prefHeight="1050.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.testPageController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #322d3e;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.testPageController">
    <children>
-      <Button fx:id="submitBtn" layoutX="911.0" layoutY="923.0" mnemonicParsing="false" onAction="#handleSubmit" text="Submit">
+      <Button fx:id="submitBtn" layoutX="657.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleSubmit" styleClass="btn" text="Submit">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Label fx:id="titleLabel" alignment="CENTER" layoutX="294.0" layoutY="64.0" prefHeight="30.0" prefWidth="624.0" text="Label" textAlignment="CENTER" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="306.0">
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="261.0" layoutY="68.0" prefHeight="30.0" prefWidth="276.0" text="Mark the answers" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="263.0">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="timeLabel" layoutX="107.0" layoutY="96.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="120.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <ScrollPane layoutX="74.0" layoutY="92.0" maxHeight="750.0" maxWidth="1832.0" minHeight="658.0" minWidth="2.0" prefHeight="658.0" prefWidth="1758.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="150.0">
+      <ScrollPane layoutX="25.0" layoutY="115.0" maxHeight="750.0" maxWidth="1832.0" minHeight="359.0" minWidth="2.0" prefHeight="395.0" prefWidth="747.0" style="-fx-background-color: #4b5475;" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="115.0">
          <content>
-            <VBox fx:id="questionVbox" spacing="10.0">
+            <VBox fx:id="questionVbox" prefHeight="391.0" prefWidth="747.0" spacing="10.0" style="-fx-background-color: #4b5475;">
                <padding>
                   <Insets left="20.0" />
                </padding>
             </VBox>
          </content>
       </ScrollPane>
+      <Label fx:id="timeLabel" layoutX="25.0" layoutY="88.0" prefHeight="19.0" prefWidth="408.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="88.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #1c2833;" width="801.0" />
+       <Text fill="WHITE" layoutX="270.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prerequisite Test" wrappingWidth="256.04931640625">
+           <font>
+               <Font name="Ubuntu Mono" size="30.0" />
+           </font>
+       </Text>
    </children>
+   <stylesheets>
+      <URL value="@dashboard.css" />
+   </stylesheets>
 </AnchorPane>

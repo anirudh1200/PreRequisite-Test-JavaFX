@@ -1,9 +1,11 @@
 package application;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -30,9 +32,10 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void loadStudentLogin() throws Exception {
+    private void loadStudentLogin(ActionEvent event) throws Exception {
         AnchorPane studentLoginPane = FXMLLoader.load(getClass().getResource("studdentLogin.fxml"));
-        rootPane.getChildren().setAll(studentLoginPane);
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.setScene(new Scene(studentLoginPane,800,600));
     }
 
     @FXML

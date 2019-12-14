@@ -4,8 +4,12 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+
+import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -14,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import connectivity.Connect;
+import javafx.stage.Stage;
 
 public class instructionPageController implements Initializable {
 
@@ -40,13 +45,17 @@ public class instructionPageController implements Initializable {
     }
 
     @FXML
-    private void startTest() {
+    private void startTest(ActionEvent event) {
         testPageController control = fxmlLoader.<testPageController>getController();
         control.getSubName(subName);
         control.getUser(username);
         control.startTimer();
         control.start();
-        rootPane.getChildren().setAll(testPane);
+        Stage questionsStage = new Stage();
+        questionsStage.setScene(new Scene(testPane));
+        questionsStage.show();
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.close();
     }
 
     public instructionPageController() throws IOException {

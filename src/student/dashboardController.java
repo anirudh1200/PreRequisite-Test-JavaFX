@@ -9,9 +9,11 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import connectivity.Connect;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -63,59 +65,57 @@ public class dashboardController implements Initializable {
     }
 
     @FXML
-    private void startMaths() throws IOException {
-        this.subName = "Applied Mathematics-3";
-        startLoadInstruction();
+    public void startMaths(ActionEvent event) throws IOException {
+        this.subName = "AM";
+        startLoadInstruction(event);
     }
 
     @FXML
-    private void startDataStructure() throws IOException {
-        this.subName = "Data Structures";
-        startLoadInstruction();
+    public void startDataStructure(ActionEvent event) throws IOException {
+        this.subName = "DS";
+        startLoadInstruction(event);
     }
 
     @FXML
-    private void startDiscreteMath() throws IOException {
-        this.subName = "Discrete Mathematics";
-        startLoadInstruction();
+    public void startDiscreteMath(ActionEvent event) throws IOException {
+        this.subName = "DM";
+        startLoadInstruction(event);
     }
 
     @FXML
-    private void startOOPM() throws IOException {
-        this.subName = "Object Oriented Programming";
-        startLoadInstruction();
+    public void startOOPM(ActionEvent event) throws IOException {
+        this.subName = "OOP";
+        startLoadInstruction(event);
     }
 
     @FXML
-    private void startDLDA() throws IOException {
+    public void startDLDA(ActionEvent event) throws IOException {
         this.subName = "DLDA";
-        startLoadInstruction();
+        startLoadInstruction(event);
     }
 
     @FXML
-    private void startECCF() throws IOException {
+    public void startECCF(ActionEvent event) throws IOException {
         this.subName = "ECCF";
-        startLoadInstruction();
+        startLoadInstruction(event);
     }
 
     @FXML
-    public void logout() throws IOException {
+    public void logout(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/FirstScene.fxml"));
         AnchorPane root = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Login");
-        stage.setScene(new Scene(root));
-        stage.show();
-        ml.getScene().getWindow().hide();
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
     }
 
-    private void startLoadInstruction() throws IOException {
+    private void startLoadInstruction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("instructionPage.fxml"));
         AnchorPane instructionPane = fxmlLoader.load();
         instructionPageController control = fxmlLoader.<instructionPageController>getController();
         control.getSubjectName(subName);
         control.getUser(username);
-        rootPane.getChildren().setAll(instructionPane);
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.setScene(new Scene(instructionPane));
     }
 
     void check() throws SQLException {
@@ -125,7 +125,7 @@ public class dashboardController implements Initializable {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()){
-            if(!rs.getString("Applied Mathematics-3").equals("-1")){
+            if(!rs.getString("AM").equals("-1")){
                 ml.setText("Completed");
                 mb.setDisable(true);
             }
@@ -133,15 +133,15 @@ public class dashboardController implements Initializable {
                 dl.setText("Completed");
                 db.setDisable(true);
             }
-            if(!rs.getString("Data Structures").equals("-1")){
+            if(!rs.getString("DS").equals("-1")){
                 dsl.setText("Completed");
                 dsb.setDisable(true);
             }
-            if(!rs.getString("Discrete Mathematics").equals("-1")){
+            if(!rs.getString("DM").equals("-1")){
                 dml.setText("Completed");
                 dmb.setDisable(true);
             }
-            if(!rs.getString("Object Oriented Programming").equals("-1")){
+            if(!rs.getString("OOP").equals("-1")){
                 ol.setText("Completed");
                 ob.setDisable(true);
             }
@@ -157,5 +157,4 @@ public class dashboardController implements Initializable {
     public void getUser(String username) {
         this.username = username;
     }
-
 }

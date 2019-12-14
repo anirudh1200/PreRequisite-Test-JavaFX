@@ -8,7 +8,7 @@ public class Connect {
 
     public Connection getConnection(){
 
-        String dbName = "Prerequisite";
+        String dbName = "prerequisite";
         String userName = "root";
         String password = "";
 

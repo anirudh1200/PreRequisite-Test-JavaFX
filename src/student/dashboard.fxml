@@ -1,65 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootPane" maxHeight="1050.0" maxWidth="1920.0" minHeight="1050.0" minWidth="1920.0" prefHeight="1050.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.dashboardController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #322d3e;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.dashboardController">
     <children>
-        <Label layoutX="763.0" layoutY="71.0" text="Student Dashboard" AnchorPane.leftAnchor="735.0" AnchorPane.rightAnchor="735.0" AnchorPane.topAnchor="75.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1c2833" height="307.0" layoutX="28.0" layoutY="223.0" stroke="BLACK" strokeType="INSIDE" width="734.0">
+         <effect>
+            <DropShadow color="#171616" offsetX="5.0" offsetY="5.0" />
+         </effect>
+      </Rectangle>
+        <Label layoutX="200.0" layoutY="116.0" prefHeight="49.0" prefWidth="404.0" text="Student Dashboard" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="196.0" AnchorPane.topAnchor="116.0">
             <font>
-                <Font size="40.0" />
+                <Font name="Ubuntu Mono" size="46.0" />
             </font>
         </Label>
-        <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" layoutX="199.0" layoutY="203.0" prefHeight="42.0" prefWidth="219.0" text="Wlc" AnchorPane.rightAnchor="1200.0" AnchorPane.topAnchor="175.0">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <Label layoutX="295.0" layoutY="339.0" text="Applied Mathematics" AnchorPane.rightAnchor="1200.0" AnchorPane.topAnchor="250.0">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <Label layoutX="334.0" layoutY="420.0" text="Data Structures" AnchorPane.rightAnchor="1200.0" AnchorPane.topAnchor="450.0">
+        <Label fx:id="usernameLabel" alignment="CENTER" layoutX="196.0" layoutY="178.0" prefHeight="42.0" prefWidth="404.0" text="Weclome" textFill="#b1afaf" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="178.0">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="277.0" layoutY="530.0" text="Discrete Mathematics" AnchorPane.rightAnchor="1200.0" AnchorPane.topAnchor="550.0">
+        <Label layoutX="61.0" layoutY="268.0" text="Applied Mathematics" textFill="#b1afaf" AnchorPane.rightAnchor="528.0" AnchorPane.topAnchor="268.0">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="247.0" layoutY="850.0" text="Object Oreinted Programming" AnchorPane.rightAnchor="1200.0" AnchorPane.topAnchor="650.0">
+        <Label layoutX="61.0" layoutY="306.0" text="Data Structures" textFill="#b1afaf" AnchorPane.rightAnchor="580.0" AnchorPane.topAnchor="306.0">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="61.0" layoutY="345.0" text="Discrete Mathematics" textFill="#b1afaf" AnchorPane.rightAnchor="520.0" AnchorPane.topAnchor="345.0">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="61.0" layoutY="384.0" text="Object Oreinted Programming" textFill="#b1afaf" AnchorPane.rightAnchor="438.0" AnchorPane.topAnchor="384.0">
          <font>
             <Font size="20.0" />
          </font></Label>
-        <Label layoutX="247.0" layoutY="960.0" text="ECCF" AnchorPane.rightAnchor="1200.0" AnchorPane.topAnchor="750.0">
+        <Label layoutX="61.0" layoutY="422.0" text="ECCF" textFill="#b1afaf" AnchorPane.rightAnchor="686.0" AnchorPane.topAnchor="422.0">
          <font>
             <Font size="20.0" />
          </font></Label>
-        <Label layoutX="247.0" layoutY="1088.0" text="Digital Logic and Data Analysis" AnchorPane.rightAnchor="1200.0" AnchorPane.topAnchor="350.0">
+        <Label layoutX="56.0" layoutY="456.0" text="Digital Logic and Data Analysis" textFill="#b1afaf" AnchorPane.rightAnchor="433.0" AnchorPane.topAnchor="456.0">
          <font>
             <Font size="20.0" />
          </font></Label>
-        <Button fx:id="mb" layoutX="931.0" layoutY="327.0" mnemonicParsing="false" onAction="#startMaths" text="Start Test -&gt;" AnchorPane.rightAnchor="900.0" AnchorPane.topAnchor="250.0" />
-        <Button fx:id="dsb" layoutX="929.0" layoutY="414.0" mnemonicParsing="false" onAction="#startDataStructure" text="Start Test -&gt;" AnchorPane.rightAnchor="900.0" AnchorPane.topAnchor="450.0" />
-        <Button fx:id="dmb" layoutX="933.0" layoutY="528.0" mnemonicParsing="false" onAction="#startDiscreteMath" text="Start Test-&gt;" AnchorPane.rightAnchor="900.0" AnchorPane.topAnchor="550.0" />
-        <Button fx:id="ob" layoutX="935.0" layoutY="845.0" mnemonicParsing="false" onAction="#startOOPM" text="Start Test -&gt;" AnchorPane.rightAnchor="900.0" AnchorPane.topAnchor="650.0" />
-        <Button fx:id="eb" layoutX="935.0" layoutY="955.0" mnemonicParsing="false" onAction="#startECCF" text="Start Test -&gt;" AnchorPane.rightAnchor="900.0" AnchorPane.topAnchor="750.0" />
-        <Button fx:id="db" layoutX="935.0" layoutY="1083.0" mnemonicParsing="false" onAction="#startDLDA" text="Start Test -&gt;" AnchorPane.rightAnchor="900.0" AnchorPane.topAnchor="350.0" />
-      <Label fx:id="ml" layoutX="1102.0" layoutY="255.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="250.0" />
-      <Label fx:id="dl" layoutX="1138.0" layoutY="355.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="350.0" />
-      <Label fx:id="dsl" layoutX="1130.0" layoutY="455.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="450.0" />
-      <Label fx:id="dml" layoutX="1148.0" layoutY="555.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="550.0" />
-      <Label fx:id="ol" layoutX="1156.0" layoutY="667.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="650.0" />
-      <Label fx:id="el" layoutX="1156.0" layoutY="755.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="750.0" />
-      <Button layoutX="929.0" layoutY="888.0" mnemonicParsing="false" onAction="#logout" text="Logout" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="920.0" AnchorPane.rightAnchor="914.0">
+        <Button fx:id="mb" layoutX="381.0" layoutY="268.0" mnemonicParsing="false" onAction="#startMaths" prefHeight="26.0" prefWidth="102.0" styleClass="btn" text="Start Test -&gt;" />
+        <Button fx:id="dsb" layoutX="381.0" layoutY="306.0" mnemonicParsing="false" onAction="#startDataStructure" prefHeight="26.0" prefWidth="102.0" styleClass="btn" text="Start Test -&gt;" />
+        <Button fx:id="dmb" layoutX="383.0" layoutY="345.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startDiscreteMath" prefHeight="26.0" prefWidth="102.0" styleClass="btn" text="Start Test-&gt;" />
+        <Button fx:id="ob" layoutX="384.0" layoutY="385.0" mnemonicParsing="false" onAction="#startOOPM" prefHeight="26.0" prefWidth="102.0" styleClass="btn" text="Start Test -&gt;" />
+        <Button fx:id="eb" layoutX="384.0" layoutY="422.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startECCF" prefHeight="26.0" prefWidth="102.0" styleClass="btn" text="Start Test -&gt;" />
+        <Button fx:id="db" layoutX="384.0" layoutY="456.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startDLDA" prefHeight="26.0" prefWidth="102.0" styleClass="btn" text="Start Test -&gt;" />
+      <Label fx:id="ml" layoutX="508.0" layoutY="273.0" prefHeight="16.0" prefWidth="181.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="273.0" />
+      <Label fx:id="dl" layoutX="508.0" layoutY="461.0" prefHeight="16.0" prefWidth="181.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="461.0" />
+      <Label fx:id="dsl" layoutX="508.0" layoutY="311.0" prefHeight="16.0" prefWidth="181.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="311.0" />
+      <Label fx:id="dml" layoutX="508.0" layoutY="350.0" prefHeight="16.0" prefWidth="181.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="350.0" />
+      <Label fx:id="ol" layoutX="508.0" layoutY="390.0" prefHeight="16.0" prefWidth="181.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="390.0" />
+      <Label fx:id="el" layoutX="508.0" layoutY="427.0" prefHeight="16.0" prefWidth="181.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="427.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #1c2833;" width="801.0" />
+      <Button layoutX="598.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logout" prefHeight="33.0" prefWidth="181.0" styleClass="btn" text="Logout" AnchorPane.rightAnchor="21.0">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Text fill="WHITE" layoutX="252.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prerequisite Test" wrappingWidth="288.04931640625">
+         <font>
+            <Font name="Ubuntu Mono" size="30.0" />
+         </font>
+      </Text>
     </children>
+    <stylesheets>
+        <URL value="@dashboard.css" />
+    </stylesheets>
 </AnchorPane>

@@ -11,12 +11,17 @@ import connectivity.Connect;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
 public class testPageController implements Initializable {
 
@@ -30,6 +35,8 @@ public class testPageController implements Initializable {
     Label titleLabel;
     @FXML
     Label timeLabel;
+
+    Vector<ToggleGroup> allTg = new Vector<>();
 
     int totalQuestions = 0;
     String subName;
@@ -48,11 +55,9 @@ public class testPageController implements Initializable {
     }
 
     @FXML
-    private void handleSubmit() throws IOException, SQLException {
-        boolean result = ConfirmBox.display("Submit", "Are you sure you want to submit?");
-        if(result == true){
-            submit();
-        }
+    private void handleSubmit(ActionEvent event) throws IOException, SQLException {
+//        boolean result = ConfirmBox.display("Submit", "Are you sure you want to submit?");
+        submit(event);
     }
 
     void start(){
@@ -71,28 +76,31 @@ public class testPageController implements Initializable {
                     interval--;
                 }
                 else{
-                    try {
-                        submit();
-                    } catch (IOException | SQLException e) {}
+                    submitBtn.fire();
                     timer.cancel();
                 }
             }
         }, 1000,1000);
     }
 
-    void changeScene() throws IOException {
+    void changeScene(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
         AnchorPane dashboard = fxmlLoader.load();
         dashboardController control = fxmlLoader.<dashboardController>getController();
         control.getUser(username);
-        rootPane.getChildren().setAll(dashboard);
+        Stage dashboardStage = new Stage();
+        dashboardStage.setScene(new Scene(dashboard));
+        dashboardStage.show();
+        Stage currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        currentStage.close();
     }
 
-    void submit() throws IOException, SQLException {
+    void submit(ActionEvent event) throws IOException, SQLException {
         this.timer.cancel();
         evaluate();
+        System.out.println("TOTAL MARKS: " + totalMarks);
         saveMarks();
-        changeScene();
+        changeScene(event);
     }
 
     void saveMarks() throws SQLException {
@@ -136,28 +144,30 @@ public class testPageController implements Initializable {
         for(int i=0; i<totalQuestions; i++) {
             System.out.println(questions.elementAt(i).ans);
             questionLabel[i] = new Label((i+1)+ ". " +questions.elementAt(i).question);
+            questionLabel[i].setTextFill(Paint.valueOf("WHITE"));
             questionBtn[(i*4)+0] = new RadioButton(questions.elementAt(i).option[0]);
             questionBtn[(i*4)+1] = new RadioButton(questions.elementAt(i).option[1]);
             questionBtn[(i*4)+2] = new RadioButton(questions.elementAt(i).option[2]);
             questionBtn[(i*4)+3] = new RadioButton(questions.elementAt(i).option[3]);
+            for(int j = 0; j < 4; j++) {
+                questionBtn[(i*4)+j].setTextFill(Paint.valueOf("WHITE"));
+            }
             tg[i] = new ToggleGroup();
             questionBtn[(i*4)+0].setToggleGroup(tg[i]);
             questionBtn[(i*4)+1].setToggleGroup(tg[i]);
             questionBtn[(i*4)+2].setToggleGroup(tg[i]);
             questionBtn[(i*4)+3].setToggleGroup(tg[i]);
-            int finalI = i;
-            tg[i].selectedToggleProperty().addListener(new ChangeListener<Toggle>()
-            {
-                @Override
-                public void changed(ObservableValue<? extends Toggle> ov, Toggle t, Toggle t1)
-                {
-
-                    RadioButton chk = (RadioButton)t1.getToggleGroup().getSelectedToggle(); // Cast object to radio button
-                    if(chk.getText().equals("option"+questions.elementAt(finalI).ans)){
-                        totalMarks++;
-                    }
-                }
-            });
+            allTg.addElement(tg[i]);
+//            int finalI = i;
+//            tg[i].selectedToggleProperty().addListener((ov, t, t1) -> {
+//
+//                RadioButton chk = (RadioButton)t1.getToggleGroup().getSelectedToggle(); // Cast object to radio button
+//                if(chk.getText().equals(questions.elementAt(finalI).ans)){
+//                    totalMarks++;
+//                }
+//                System.out.println(chk.getText());
+//                System.out.println(totalMarks);
+//            });
             questionVbox.getChildren().addAll(questionLabel[i], questionBtn[(i*4)+0], questionBtn[(i*4)+1], questionBtn[(i*4)+2], questionBtn[(i*4)+3]);
         }
         sp.setContent(questionVbox);
@@ -166,6 +176,14 @@ public class testPageController implements Initializable {
     }
 
     void evaluate() {
+        totalMarks = 0;
+        for(int i = 0; i < allTg.size(); i++) {
+            RadioButton selected = (RadioButton)allTg.get(i).getSelectedToggle();
+            String ans = questions.get(i).ans;
+            if(selected.getText().equals(ans)) {
+                totalMarks++;
+            }
+        }
         percentage = totalMarks*100/totalQuestions;
     }
 

@@ -2,9 +2,11 @@ package application;
 
 import connectivity.Connect;
 import faculty.dashboardController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -34,7 +36,7 @@ public class facultyLoginController implements Initializable {
     }
 
     @FXML
-    private void facultyLogin() throws SQLException, IOException {
+    private void facultyLogin(ActionEvent event) throws SQLException, IOException {
 
         Connect connect = new Connect();
         Connection connection = connect.getConnection();
@@ -67,12 +69,15 @@ public class facultyLoginController implements Initializable {
         AnchorPane root1 = fxmlLoader.load();
         dashboardController control = fxmlLoader.<dashboardController>getController();
         control.getName(facultyName);
-        Stage stage = new Stage();
-        stage.setTitle("Student Prerequisite Test");
-        stage.setScene(new Scene(root1));
-        stage.show();
         statement.close();
-        warningLabel.getScene().getWindow().hide();
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.setScene(new Scene(root1));
     }
 
+    @FXML
+    private void onClickBack(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FirstScene.fxml"));
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        primaryStage.setScene(new Scene(pane));
+    }
 }

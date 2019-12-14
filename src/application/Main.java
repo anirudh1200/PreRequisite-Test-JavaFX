@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -15,7 +16,9 @@ public class Main extends Application {
         AnchorPane root = FXMLLoader.load(getClass().getResource("FirstScene.fxml"));
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Login");
-        primaryStage.setScene(new Scene(root, 1000, 750));
+        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setResizable(false);
+        primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.show();
     }
 
