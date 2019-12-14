@@ -1,42 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faculty.dashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #322d3e;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faculty.dashboardController">
     <children>
-        <Label layoutX="785.0" layoutY="65.0" text="Faculty Dashboard">
+        <Label layoutX="223.0" layoutY="93.0" text="Faculty Dashboard" textFill="WHITE">
             <font>
                 <Font size="40.0" />
             </font>
         </Label>
-      <Label fx:id="facultyName" layoutX="130.0" layoutY="196.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="200.0">
+      <Label fx:id="facultyName" layoutX="39.0" layoutY="177.0" prefHeight="25.0" prefWidth="545.0" text="Faculty Name" textFill="#a7a0a0" AnchorPane.leftAnchor="39.0" AnchorPane.topAnchor="177.0">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Button layoutX="1625.0" layoutY="210.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
-      <Label fx:id="displayTotal" layoutX="212.0" layoutY="336.0" text="Label" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="300.0">
+      <Button layoutX="657.0" layoutY="169.0" mnemonicParsing="false" onAction="#refresh" prefHeight="41.0" prefWidth="115.0" styleClass="btn" text="Refresh">
          <font>
-            <Font size="20.0" />
-         </font></Label>
-      <Label fx:id="displayCompleted" layoutX="212.0" layoutY="408.0" text="Label" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="400.0">
+            <Font name="Ubuntu Mono" size="22.0" />
+         </font></Button>
+      <Label fx:id="displayTotal" layoutX="33.0" layoutY="238.0" prefHeight="25.0" prefWidth="743.0" text="Total" textFill="#a7a0a0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="238.0">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font></Label>
-      <Label fx:id="displayIncomplete" layoutX="194.0" layoutY="501.0" text="Label" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="500.0">
+      <Label fx:id="displayCompleted" layoutX="33.0" layoutY="300.0" prefHeight="25.0" prefWidth="743.0" text="Completed: " textFill="#a7a0a0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="300.0">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font></Label>
-      <Label fx:id="displayAllFailed" layoutX="212.0" layoutY="598.0" text="Label" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="600.0">
+      <Label fx:id="displayIncomplete" layoutX="33.0" layoutY="358.0" prefHeight="25.0" prefWidth="743.0" text="In Complete: " textFill="#a7a0a0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="358.0">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font></Label>
-      <Label fx:id="displayPartiallyFailed" layoutX="212.0" layoutY="690.0" text="Label" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="700.0">
+      <Label fx:id="displayAllFailed" layoutX="33.0" layoutY="423.0" prefHeight="25.0" prefWidth="743.0" text="Failed: " textFill="#a7a0a0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="423.0">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font></Label>
-      <Button layoutX="923.0" layoutY="827.0" mnemonicParsing="false" onAction="#logout" prefHeight="72.0" prefWidth="120.0" text="Logout" AnchorPane.bottomAnchor="151.0" AnchorPane.leftAnchor="923.0" AnchorPane.rightAnchor="877.0" AnchorPane.topAnchor="827.0" />
+      <Label fx:id="displayPartiallyFailed" layoutX="33.0" layoutY="488.0" prefHeight="25.0" prefWidth="743.0" text="Partially Failed:" textFill="#a7a0a0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="488.0">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #1c2833;" width="801.0" />
+        <Text fill="WHITE" layoutX="252.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prerequisite Test" wrappingWidth="288.04931640625">
+            <font>
+                <Font name="Ubuntu Mono" size="30.0" />
+            </font>
+        </Text>
+      <Button layoutX="589.0" layoutY="7.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="183.0" styleClass="btn" text="Logout">
+         <font>
+            <Font name="Ubuntu Mono" size="24.0" />
+         </font>
+      </Button>
     </children>
+    <stylesheets>
+        <URL value="@../student/dashboard.css" />
+    </stylesheets>
 </AnchorPane>

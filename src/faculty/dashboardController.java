@@ -80,19 +80,19 @@ public class dashboardController implements Initializable {
         ResultSet rs = statement.executeQuery(query);
         while(rs.next()){
             totalStudents++;
-            boolean completed = (!rs.getString("Applied Mathematics-3").equals("-1") && !rs.getString("DLDA").equals("-1") && !rs.getString("Data Structures").equals("-1") && !rs.getString("Discrete Mathematics").equals("-1") && !rs.getString("Object Oriented Programming").equals("-1") && !rs.getString("ECCF").equals("-1"));
+            boolean completed = (!rs.getString("AM").equals("-1") && !rs.getString("DLDA").equals("-1") && !rs.getString("DS").equals("-1") && !rs.getString("DM").equals("-1") && !rs.getString("OOP").equals("-1") && !rs.getString("ECCF").equals("-1"));
             if(completed){
                 allCompletedStudents++;
             }
-            boolean incomplete = (rs.getString("Applied Mathematics-3").equals("-1") && rs.getString("DLDA").equals("-1") && rs.getString("Data Structures").equals("-1") && rs.getString("Discrete Mathematics").equals("-1") && rs.getString("Object Oriented Programming").equals("-1") && rs.getString("ECCF").equals("-1"));
+            boolean incomplete = (rs.getString("AM").equals("-1") && rs.getString("DLDA").equals("-1") && rs.getString("DS").equals("-1") && rs.getString("DM").equals("-1") && rs.getString("OOP").equals("-1") && rs.getString("ECCF").equals("-1"));
             if(incomplete){
                 allIncompleteStudents++;
             }
-            boolean fail = (rs.getInt("Applied Mathematics-3")<40 && rs.getInt("DLDA")<40 && rs.getInt("Data Structures")<40 && rs.getInt("Discrete Mathematics")<40 && rs.getInt("Object Oriented Programming")<40 && rs.getInt("ECCF")<40);
+            boolean fail = (rs.getInt("AM")<40 && rs.getInt("DLDA")<40 && rs.getInt("DS")<40 && rs.getInt("DM")<40 && rs.getInt("OOP")<40 && rs.getInt("ECCF")<40);
             if(fail){
                 allFailed++;
             }
-            boolean paritalFail = (rs.getInt("Applied Mathematics-3")<40 || rs.getInt("DLDA")<40 || rs.getInt("Data Structures")<40 || rs.getInt("Discrete Mathematics")<40 || rs.getInt("Object Oriented Programming")<40 || rs.getInt("ECCF")<40);
+            boolean paritalFail = (rs.getInt("AM")<40 || rs.getInt("DLDA")<40 || rs.getInt("DS")<40 || rs.getInt("DM")<40 || rs.getInt("OOP")<40 || rs.getInt("ECCF")<40);
             if(paritalFail ){
                 partialFailed++;
             }
